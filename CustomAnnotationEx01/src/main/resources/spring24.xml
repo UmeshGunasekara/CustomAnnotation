@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+                            http://www.springframework.org/schema/context
+                            http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+    <!--<bean id="triangle" class="com.elpisit.javabrains04springtutorialex01.test.t20.Triangle" autowire="byName" />-->
+    <!--<bean id="circle" class="com.elpisit.javabrains04springtutorialex01.test.t22.Circle" >-->
+        <!--&lt;!&ndash;<property name="center" ref="pointA"/>&ndash;&gt;-->
+    <!--</bean>-->
+
+    <bean id="pointA" class="com.elpisit.javabrains04springtutorialex01.test.t24.Point" >
+        <qualifier value="circleRelated" />
+        <property name="x" value="${pointA.valueX}"/>
+        <property name="y" value="${pointA.valueY}"/>
+    </bean>
+    <bean id="pointB" class="com.elpisit.javabrains04springtutorialex01.test.t24.Point" >
+        <property name="x" value="-20"/>
+        <property name="y" value="0"/>
+    </bean>
+    <bean id="pointC" class="com.elpisit.javabrains04springtutorialex01.test.t24.Point" >
+        <property name="x" value="20"/>
+        <property name="y" value="0"/>
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="pointsconfig.properties"/>
+    </bean>
+
+    <context:annotation-config/>
+    <context:component-scan base-package="com.elpisit.javabrains04springtutorialex01.test.t24"/>
+
+
+</beans>
